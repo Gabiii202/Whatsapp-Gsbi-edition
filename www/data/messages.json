@@ -1,0 +1,19 @@
+[
+  {
+    "conversationId": "56bda0a65601a2bd587dccce",
+    "messages": [
+      {
+        "_id": "56bda7d2d1f547163701777b",
+        "sender": "Max",
+        "text": "Repas ce midi ?",
+        "sentDate": "Fri Feb 17 2017 12:00:00 GMT+0100 (CET)"
+      },
+      {
+        "_id": "56bda7d2d1f547163701777b",
+        "sender": "Adam",
+        "text": "Je peux pas j'ai piscine",
+        "sentDate": "Fri Feb 17 2017 12:15:00 GMT+0100 (CET)"
+      }
+    ]
+  }
+]

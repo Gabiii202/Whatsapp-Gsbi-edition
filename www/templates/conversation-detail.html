@@ -1,0 +1,56 @@
+<ion-view cache-view="false" view-title="{{conversation.name}}">
+
+  <ion-content has-bouncing="true" class="has-header has-footer"
+               delegate-handle="userMessageScroll">
+
+    <div ng-repeat="message in messages" class="message-wrapper"
+         on-hold="onMessageHold($event, $index, message)">
+
+      <div ng-if="user.firstName !== message.sender">
+
+        <!--<img class="profile-pic left" ng-src="{{message.sender.face}}"/>-->
+
+        <div class="chat-bubble left">
+
+          <div class="message" ng-bind-html="message.text" autolinker>
+          </div>
+
+          <div class="message-detail">
+            <span class="bold">{{message.sender}}</span>,
+            <span am-time-ago="message.sentDate"></span>
+          </div>
+
+        </div>
+      </div>
+
+      <div ng-if="user.firstName === message.sender">
+
+        <img class="profile-pic right" ng-src="{{user.face}}"/>
+
+        <div class="chat-bubble right">
+
+          <div class="message" ng-bind-html="message.text" autolinker>
+          </div>
+
+          <div class="message-detail">
+            <span class="bold">{{user.firstName}}</span>,
+            <span am-time-ago="message.sentDate"></span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </ion-content>
+
+  <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
+    <label class="item-input-wrapper">
+      <input ng-model="message" value="" placeholder="Send a message..." required minlength="1" maxlength="1500" msd-elastic></textarea>
+    </label>
+    <div class="footer-btn-wrap">
+      <button class="button button-icon icon ion-android-send footer-btn"
+              ng-disabled="!message || message === ''" ng-click="sendMessage(message)">
+      </button>
+    </div>
+  </ion-footer-bar>
+
+</ion-view>

@@ -1,0 +1,32 @@
+<ion-view view-title="Nouvelle conversation">
+  <ion-content>
+
+    <div class="list card">
+      <label class="item item-input">
+        <input ng-model="name" type="text" name="name" placeholder="Nom" class="item"/>
+      </label>
+
+      <label class="item item-input">
+        <input ng-model="description" type="text" name="description" placeholder="Description" class="item"/>
+      </label>
+
+      <ion-toggle  ng-model="newConversation.private">
+        Privée
+      </ion-toggle>
+    </div>
+
+    <div class="list card" ng-if="newConversation.private === true">
+      <ion-checkbox ng-repeat="contact in newConversationContacts | orderBy:'firstName'" ng-model="contact.checked">
+        {{contact.firstName}} {{contact.lastName}}
+      </ion-checkbox>
+    </div>
+
+
+    <div class="text-center">
+      <button ng-click="createConversation(name, description,newConversationContacts)" class="button button-block button-stable">
+        Créer
+      </button>
+    </div>
+
+  </ion-content>
+</ion-view>

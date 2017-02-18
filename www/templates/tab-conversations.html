@@ -1,0 +1,16 @@
+<ion-view cache-view="false" >
+  <ion-nav-title>
+    Conversations
+    <a id="add-conversation" class="icon icon ion-plus-round" href="#newConversation"></a>
+  </ion-nav-title>
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="conversation in conversations | orderBy: 'creationDate'"
+                type="item-text-wrap" href="#/tab/conversations/{{conversation._id}}">
+        <img src="img/conversation.png">
+        <h2>{{conversation.name}}</h2>
+        <p>{{conversation.lastText}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
