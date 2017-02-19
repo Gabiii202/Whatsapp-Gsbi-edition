@@ -5,14 +5,19 @@
   angular.module('myWhatsApp.controllers')
     .controller("ConversationsCtrl",ConversationsCtrl);
 
-  ConversationsCtrl.$inject=['$scope','ConversationsSrv'];
+  ConversationsCtrl.$inject=['$scope','ConversationsSrv','$rootScope'];
 
-  function ConversationsCtrl($scope, ConversationsSrv) {
+  function ConversationsCtrl($scope, ConversationsSrv,$rootScope) {
 
 
-     ConversationsSrv.findAll().then(function (conversations) {
-       $scope.conversations = conversations;
-    });
+    $scope.initModel = function () {
+      $scope.conversations = ConversationsSrv.findConversationsForContact($rootScope.user._id);
+    };
+
+
+    $scope.creationDateOrder = function(conversation) {
+      return new Date(conversation.creationDate);
+    };
 
   }
 

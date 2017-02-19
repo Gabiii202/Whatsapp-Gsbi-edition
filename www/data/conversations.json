@@ -1,14 +1,24 @@
-[
-  {
-    "_id": "56bda0a65601a2bd587dccce",
-    "name": "Repas",
-    "description": "Repas entre collègues",
-    "creationDate": "Fri Feb 17 2017 12:00:00 GMT+0100 (CET)"
-  },
-  {
-    "_id": "56bda0a69cef8e037dcdb167",
-    "name": "Piscine",
-    "description": "Je peux pas j'ai piscine",
-    "creationDate": "Fri Feb 17 2017 17:00:00 GMT+0100 (CET)"
+{
+  "conversations": {
+    "1487434520767": {
+      "_id": "1487434520767",
+      "name": "Repas",
+      "description": "Repas entre collègues",
+      "creationDate": "Fri Feb 18 2017 12:00:00 GMT+0100 (CET)",
+      "lastMessage": "Je peux pas j'ai piscine",
+      "lastMessageDate": "Fri Feb 17 2017 12:15:00 GMT+0100 (CET)",
+      "private": false
+    },
+    "1487434543928":{
+      "_id": "1487434543928",
+      "name": "Piscine",
+      "description": "Piscine entre collègues",
+      "creationDate": "Fri Feb 17 2017 17:00:00 GMT+0100 (CET)",
+      "lastMessage": "",
+      "lastMessageDate": "",
+      "private": true
+    }
   }
-]
+}
+
+

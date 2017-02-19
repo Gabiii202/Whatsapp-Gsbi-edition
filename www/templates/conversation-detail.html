@@ -1,9 +1,9 @@
 <ion-view cache-view="false" view-title="{{conversation.name}}">
 
   <ion-content has-bouncing="true" class="has-header has-footer"
-               delegate-handle="userMessageScroll">
+               delegate-handle="userMessageScroll" ng-init="initModel()">
 
-    <div ng-repeat="message in messages" class="message-wrapper"
+    <div ng-repeat="message in messages | orderBy: dateOrder" class="message-wrapper"
          on-hold="onMessageHold($event, $index, message)">
 
       <div ng-if="user.firstName !== message.sender">

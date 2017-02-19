@@ -1,42 +1,45 @@
-[
-  {
-    "_id": "0",
-    "email": "ben.sparrow@gmail.com",
-    "firstName": "Ben",
-    "lastName": "Sparrow",
-    "password": "password",
-    "face": "img/ben.png"
-  },
-  {
-    "_id": "1",
-    "email": "max.lynx@gmail.com",
-    "firstName": "Max",
-    "lastName": "Lynx",
-    "password": "password",
-    "face": "img/max.png"
-  },
-  {
-    "_id": "2",
-    "email": "adam.bradleyson@gmail.com",
-    "firstName": "Adam",
-    "lastName": "Bradleyson",
-    "password": "password",
-    "face": "img/adam.png"
-  },
-  {
-    "_id": "3",
-    "email": "perry.governor@gmail.com",
-    "firstName": "Perry",
-    "lastName": "Governor",
-    "password": "password",
-    "face": "img/perry.png"
-  },
-  {
-    "_id": "4",
-    "email": "mike.harrington@gmail.com",
-    "firstName": "Mike",
-    "lastName": "Harrington",
-    "password": "password",
-    "face": "img/mike.png"
+{
+  "contacts": {
+    "1487435035359": {
+      "_id": "1487435035359",
+      "email": "ben.sparrow@gmail.com",
+      "firstName": "Ben",
+      "lastName": "Sparrow",
+      "password": "password",
+      "face": "img/ben.png"
+    },
+    "1487435062835": {
+      "_id": "1487435062835",
+      "email": "max.lynx@gmail.com",
+      "firstName": "Max",
+      "lastName": "Lynx",
+      "password": "password",
+      "face": "img/max.png"
+    },
+    "1487435074302": {
+      "_id": "1487435074302",
+      "email": "adam.bradleyson@gmail.com",
+      "firstName": "Adam",
+      "lastName": "Bradleyson",
+      "password": "password",
+      "face": "img/adam.png"
+    },
+    "1487435086572": {
+      "_id": "1487435086572",
+      "email": "perry.governor@gmail.com",
+      "firstName": "Perry",
+      "lastName": "Governor",
+      "password": "password",
+      "face": "img/perry.png"
+    },
+    "1487435098934": {
+      "_id": "1487435098934",
+      "email": "mike.harrington@gmail.com",
+      "firstName": "Mike",
+      "lastName": "Harrington",
+      "password": "password",
+      "face": "img/mike.png"
+    }
+
   }
-]
+}

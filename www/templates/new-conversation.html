@@ -16,14 +16,14 @@
     </div>
 
     <div class="list card" ng-if="newConversation.private === true">
-      <ion-checkbox ng-repeat="contact in newConversationContacts | orderBy:'firstName'" ng-model="contact.checked">
+      <ion-checkbox ng-repeat="contact in contacts | orderBy:'firstName'" ng-if="contact._id !== user._id" ng-model="contact.checked">
         {{contact.firstName}} {{contact.lastName}}
       </ion-checkbox>
     </div>
 
 
     <div class="text-center">
-      <button ng-click="createConversation(name, description,newConversationContacts)" class="button button-block button-stable">
+      <button ng-click="createConversation(name, description,contacts)" class="button button-block button-stable">
         Créer
       </button>
     </div>

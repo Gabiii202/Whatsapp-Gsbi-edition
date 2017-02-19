@@ -2,8 +2,8 @@
 
   'use strict';
 
-  angular.module('myWhatsApp', ['ionic', 'myWhatsApp.controllers', 'myWhatsApp.services','ngGuid','angularMoment',
-                                'nl2br'])
+  angular.module('myWhatsApp', ['ionic', 'myWhatsApp.controllers', 'myWhatsApp.services','angularMoment',
+                                'nl2br','firebase'])
 
     .run(function($ionicPlatform, $rootScope, $location, $state) {
 
@@ -80,13 +80,27 @@
             }
           }
         })
+        // .state('tab.conversationDetailFromContacts',{
+        //   params: {
+        //     conversationId: null
+        //   },
+        //   views: {
+        //     'tab-conversations': {
+        //       templateUrl: 'templates/tab-conversations.html',
+        //       controller: function($location,$stateParams){
+        //         $location.path('/tab/conversations/'+$stateParams.conversationId);
+        //       }
+        //     }
+        //   }
+        // })
+
         .state('newConversation', {
           url: '/newConversation',
               templateUrl: 'templates/new-conversation.html',
               controller: 'NewConversationCtrl'
         })
 
-        .state('tab.conversation-detail', {
+        .state('tab.conversationDetail', {
           url: '/conversations/:conversationId',
           views: {
             'tab-conversations': {

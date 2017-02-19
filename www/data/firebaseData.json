@@ -1,0 +1,88 @@
+{
+    "contacts": {
+      "1487435035359": {
+        "_id": "1487435035359",
+        "email": "ben.sparrow@gmail.com",
+        "firstName": "Ben",
+        "lastName": "Sparrow",
+        "password": "password",
+        "face": "img/ben.png"
+      },
+      "1487435062835": {
+        "_id": "1487435062835",
+        "email": "max.lynx@gmail.com",
+        "firstName": "Max",
+        "lastName": "Lynx",
+        "password": "password",
+        "face": "img/max.png"
+      },
+      "1487435074302": {
+        "_id": "1487435074302",
+        "email": "adam.bradleyson@gmail.com",
+        "firstName": "Adam",
+        "lastName": "Bradleyson",
+        "password": "password",
+        "face": "img/adam.png"
+      },
+      "1487435086572": {
+        "_id": "1487435086572",
+        "email": "perry.governor@gmail.com",
+        "firstName": "Perry",
+        "lastName": "Governor",
+        "password": "password",
+        "face": "img/perry.png"
+      },
+      "1487435098934": {
+        "_id": "1487435098934",
+        "email": "mike.harrington@gmail.com",
+        "firstName": "Mike",
+        "lastName": "Harrington",
+        "password": "password",
+        "face": "img/mike.png"
+      }
+
+    },
+  "conversations": {
+    "1487434520767": {
+      "_id": "1487434520767",
+      "name": "Repas",
+      "description": "Repas entre collègues",
+      "creationDate": "Fri Feb 18 2017 12:00:00 GMT+0100 (CET)",
+      "lastMessage": "Je peux pas j'ai piscine",
+      "lastMessageDate": "Fri Feb 17 2017 12:15:00 GMT+0100 (CET)",
+      "private": false
+    },
+    "1487434543928":{
+      "_id": "1487434543928",
+      "name": "Piscine",
+      "description": "Piscine entre collègues",
+      "creationDate": "Fri Feb 17 2017 17:00:00 GMT+0100 (CET)",
+      "lastMessage": "",
+      "lastMessageDate": "",
+      "private": true
+    }
+  },
+  "messages": {
+    "1487434520767": {
+      "1487439961133": {
+        "_id": "1487439961133",
+        "sender": "Adam",
+        "text": "Je peux pas j'ai piscine",
+        "sentDate": "Fri Feb 17 2017 12:15:00 GMT+0100 (CET)"
+      },
+      "1487439841481": {
+        "_id": "1487439841481",
+        "sender": "Max",
+        "text": "Repas ce midi ?",
+        "sentDate": "Fri Feb 17 2017 12:00:00 GMT+0100 (CET)"
+      }
+    }
+  },
+  "members": {
+    "1487434543928": {
+      "1487435035359": true,
+      "1487435074302": true
+    }
+  }
+}
+

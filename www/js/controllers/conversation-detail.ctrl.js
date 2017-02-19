@@ -5,35 +5,35 @@
   angular.module('myWhatsApp.controllers')
     .controller("ConversationDetailCtrl",ConversationDetailCtrl);
 
-  ConversationDetailCtrl.$inject=['$scope', '$stateParams', 'ConversationsSrv', 'ConversationDetailSrv', 'Guid', '$rootScope'];
+  ConversationDetailCtrl.$inject=['$scope', '$stateParams', 'ConversationsSrv', 'ConversationDetailSrv'];
 
-  function ConversationDetailCtrl($scope, $stateParams, ConversationsSrv, ConversationDetailSrv, Guid, $rootScope) {
+  function ConversationDetailCtrl($scope, $stateParams, ConversationsSrv, ConversationDetailSrv) {
 
-    var conversationId = $stateParams.conversationId;
+    let conversationId = $stateParams.conversationId;
 
-    $scope.conversation = ConversationsSrv.getConversation(conversationId);
+    $scope.initModel = function() {
+      $scope.messages = ConversationDetailSrv.findAll(conversationId);
 
-
-    ConversationDetailSrv.findAll(conversationId).then(function(messages){
-      $scope.messages = messages;
-    });
+      // TODO : doesn't work: conversation title isn't shown on the conversationDetail view
+      ConversationsSrv.getConversation(conversationId).then(function (conversation) {
+        $scope.conversation = conversation;
+      });
+    };
 
     $scope.sendMessage = function(message) {
+      let newMessage = ConversationDetailSrv.addMessage(message);
 
-      let newMessage = {
-        _id: Guid.newGuid(),
-        sender: $rootScope.user.firstName,
-        text: message,
-        sentDate: new Date()
-      };
+      $scope.messages.$ref().child(newMessage._id).set(newMessage);
 
-      $scope.messages.push(newMessage);
+      ConversationsSrv.updateLastText(conversationId,message,new Date().toString());
 
       $scope.message = null;
 
     };
 
-
+    $scope.dateOrder = function(message) {
+      return new Date(message.sentDate);
+    };
 
   }
 

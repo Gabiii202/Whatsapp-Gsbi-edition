@@ -5,25 +5,34 @@
   angular.module('myWhatsApp.controllers')
     .controller("NewConversationCtrl",NewConversationCtrl);
 
-  NewConversationCtrl.$inject=['$scope','ContactsSrv','ConversationsSrv','$location', '$ionicPopup'];
+  NewConversationCtrl.$inject=['$scope','ContactsSrv','ConversationsSrv','$location', '$ionicPopup','$rootScope'];
 
-  function NewConversationCtrl($scope,ContactsSrv,ConversationsSrv,$location,$ionicPopup) {
+  function NewConversationCtrl($scope,ContactsSrv,ConversationsSrv,$location,$ionicPopup,$rootScope) {
+
+    $scope.conversations = ConversationsSrv.findAll();
+
+    $scope.contacts = ContactsSrv.findAll();
 
     $scope.newConversation = {
       private: false
     };
 
-    ContactsSrv.findAll().then(function (contacts){
-      $scope.newConversationContacts = contacts;
-    });
 
     $scope.createConversation = function(name,description,contacts){
 
-      var status = $scope.newConversation.private;
+      let status = $scope.newConversation.private;
 
 
-      var ret = ConversationsSrv.addConversation(name,description);
-      if(ret !== -1){
+      let conversation = ConversationsSrv.addConversation(name,description,status);
+      if(conversation !== null){
+
+        $scope.conversations.$ref().child(conversation._id).set(conversation);
+
+        if(status){
+          let contactsToAdd = contacts.filter(c => c.checked === true || c._id === $rootScope.user._id);
+          ConversationsSrv.setPrivateConversationMembers(conversation._id,contactsToAdd);
+        }
+
         $location.path('/tab/conversations');
       }
       else {

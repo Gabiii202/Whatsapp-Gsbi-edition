@@ -10,22 +10,24 @@
 
   function LoginCtrl($scope, $rootScope, $location, ContactsSrv, $ionicPopup) {
 
-    ContactsSrv.findAll().then(function (contacts) {
-      $scope.contacts = contacts;
-    });
 
     $scope.login = function(email, password) {
 
-      $rootScope.user = ContactsSrv.authenticate(email, password);
+      ContactsSrv.authenticate(email, password).then(function(user){
 
-      if($rootScope.user !== null) {
-        $location.path('/conversations');
-      } else {
+        $rootScope.user = user;
+
+        $location.path('/contacts');
+
+      }).catch(function () {
+
         $ionicPopup.alert({
           title: 'Erreur d\'authentification',
           template: 'Adresse mail ou mot de passe incorect'
         });
-      }
+
+      });
+
     };
 
   }

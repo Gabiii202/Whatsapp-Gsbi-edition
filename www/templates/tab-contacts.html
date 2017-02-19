@@ -6,13 +6,15 @@
       <input type="text" placeholder="Rechercher" ng-model="model.queryContact"/>
     </label>
   </ion-header-bar>
-  <ion-content>
+
+  <ion-content ng-init="initModel()">
     <ion-list id="contactsList">
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="contact in contacts |
-        orderBy:'firstName' | filter:searchContact" type="item-text-wrap">
+        orderBy:'firstName' | filter:searchContact" type="item-text-wrap" ng-if="contact._id !== user._id" ng-click="newPrivateConversation(contact)">
         <img ng-src="{{contact.face}}">
         <h2>{{contact.firstName}} {{contact.lastName}}</h2>
       </ion-item>
     </ion-list>
   </ion-content>
+
 </ion-view>

@@ -10,14 +10,15 @@
 
   function SignupCtrl($scope, $rootScope, $location, ContactsSrv, $ionicPopup) {
 
-    ContactsSrv.findAll().then(function (contacts) {
-      $scope.contacts = contacts;
-    });
+    $scope.contacts = ContactsSrv.findAll();
 
     $scope.signup = function(prenom, nom, email, password) {
 
       if(prenom && nom && email && password) {
         $rootScope.user = ContactsSrv.addContact(prenom, nom, email, password);
+
+        $scope.contacts.$add($rootScope.user);
+
         $location.path('/conversations');
       } else {
 

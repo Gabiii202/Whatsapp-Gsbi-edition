@@ -11,6 +11,7 @@
   function ParameterCtrl($scope,$rootScope,$location) {
 
     $scope.disconnect = function(){
+
       $rootScope.user = null;
       $location.path("/login");
     }

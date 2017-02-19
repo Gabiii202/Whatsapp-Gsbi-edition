@@ -3,11 +3,11 @@
   <ion-content>
     <div class="list card">
       <label class="item item-input">
-        <input ng-model="email" type="text" name="email" placeholder="Email" class="item"/>
+        <input ng-model="email" type="text" placeholder="Email" class="item"/>
       </label>
 
       <label class="item item-input">
-        <input ng-model="password" type="password" name="password" placeholder="Mot de passe" class="item"/>
+        <input ng-model="password" type="password" placeholder="Mot de passe" class="item"/>
       </label>
     </div>
 
@@ -15,7 +15,7 @@
       <button ng-click="login(email, password)" class="button button-block button-stable" id="login-button">
         Se connecter
       </button>
-      <a href="#/signup">Créer un compte</a>
+      <a ui-sref="signup">Créer un compte</a>
     </div>
 
 
