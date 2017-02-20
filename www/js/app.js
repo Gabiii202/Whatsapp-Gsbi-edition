@@ -20,7 +20,7 @@
           StatusBar.styleDefault();
         }
 
-        // Pattern d'authentification
+        // Authentication pattern. We redirect user to login page if rootScope.user isn't defined
         $rootScope.$on('$ionicView.beforeEnter', function(e, view) {
 
           if(view.stateId === 'signup' || view.stateId === 'login' ) {
@@ -73,6 +73,10 @@
 
         .state('tab.conversations', {
           url: '/conversations',
+          params:{
+            conversationId: null,
+            straightToDetail: false
+          },
           views: {
             'tab-conversations': {
               templateUrl: 'templates/tab-conversations.html',
@@ -80,19 +84,6 @@
             }
           }
         })
-        // .state('tab.conversationDetailFromContacts',{
-        //   params: {
-        //     conversationId: null
-        //   },
-        //   views: {
-        //     'tab-conversations': {
-        //       templateUrl: 'templates/tab-conversations.html',
-        //       controller: function($location,$stateParams){
-        //         $location.path('/tab/conversations/'+$stateParams.conversationId);
-        //       }
-        //     }
-        //   }
-        // })
 
         .state('newConversation', {
           url: '/newConversation',
@@ -102,6 +93,9 @@
 
         .state('tab.conversationDetail', {
           url: '/conversations/:conversationId',
+          params:{
+            straightToDetail: false
+          },
           views: {
             'tab-conversations': {
               templateUrl: 'templates/conversation-detail.html',

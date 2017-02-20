@@ -18,8 +18,8 @@
     };
 
     $scope.searchContact = function(contact) {
-      if($scope.model.queryContact) {
-        let query = $scope.model.queryContact.toLowerCase();
+      if($scope.model.search) {
+        let query = $scope.model.search.toLowerCase();
         return contact.firstName.toLowerCase().indexOf(query) > -1 || contact.lastName.toLowerCase().indexOf(query) > -1;
       } else {
         return true;
@@ -37,8 +37,8 @@
 
         ConversationsSrv.setPrivateConversationMembers(conversation._id,[$rootScope.user,contact]);
 
-        //$state.go('tab.conversationDetailFromContacts',{conversationId:conversation._id});
-        $location.path('/tab/conversations/'+conversation._id);
+        $state.go('tab.conversations',{conversationId:conversation._id,straightToDetail:true});
+        //$location.path('/tab/conversations/'+conversation._id);
       }
     }
 
