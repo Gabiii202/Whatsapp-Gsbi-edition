@@ -5,9 +5,9 @@
   angular.module('myWhatsApp.services')
     .service('ConversationDetailSrv', ConversationDetailSrv);
 
-  ConversationDetailSrv.$inject = ['$rootScope','$firebaseArray'];
+  ConversationDetailSrv.$inject = ['$rootScope','$firebaseArray','$ionicHistory'];
 
-  function ConversationDetailSrv($rootScope,$firebaseArray) {
+  function ConversationDetailSrv($rootScope,$firebaseArray,$ionicHistory) {
 
     this.findAll = function(conversationId) {
       let ref = firebase.database().ref("/messages/"+conversationId);
@@ -22,6 +22,16 @@
         text: message,
         sentDate: new Date().toString()
       };
+    }
+
+    this.setHistoryStraightToDetail = function (value) {
+      let historyId = $ionicHistory.currentHistoryId();
+      let history = $ionicHistory.viewHistory().histories[historyId];
+      for (let i = history.stack.length - 1; i >= 0; i--){
+        if (history.stack[i].stateName == 'tab.conversations'){
+          history.stack[i].stateParams.straightToDetail = value;
+        }
+      }
     }
 
 

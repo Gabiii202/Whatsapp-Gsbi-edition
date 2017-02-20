@@ -51,13 +51,13 @@
 
         .state('login', {
           url: '/login',
-          templateUrl: 'templates/login.html',
+          templateUrl: 'templates/login.tpl.html',
           controller: 'LoginCtrl'
         })
 
         .state('signup', {
           url: '/signup',
-          templateUrl: 'templates/signup.html',
+          templateUrl: 'templates/signup.tpl.html',
           controller: 'SignupCtrl'
         })
 
@@ -65,7 +65,7 @@
           url: '/contacts',
           views: {
             'tab-contacts': {
-              templateUrl: 'templates/tab-contacts.html',
+              templateUrl: 'templates/tab-contacts.tpl.html',
               controller: 'ContactsCtrl'
             }
           }
@@ -79,7 +79,7 @@
           },
           views: {
             'tab-conversations': {
-              templateUrl: 'templates/tab-conversations.html',
+              templateUrl: 'templates/tab-conversations.tpl.html',
               controller: 'ConversationsCtrl'
             }
           }
@@ -87,7 +87,7 @@
 
         .state('newConversation', {
           url: '/newConversation',
-              templateUrl: 'templates/new-conversation.html',
+              templateUrl: 'templates/new-conversation.tpl.html',
               controller: 'NewConversationCtrl'
         })
 
@@ -98,7 +98,7 @@
           },
           views: {
             'tab-conversations': {
-              templateUrl: 'templates/conversation-detail.html',
+              templateUrl: 'templates/conversation-detail.tpl.html',
               controller: 'ConversationDetailCtrl'
             }
           }
@@ -108,7 +108,7 @@
           url: '/parameters',
           views: {
             'tab-parameters': {
-              templateUrl: 'templates/tab-parameters.html',
+              templateUrl: 'templates/tab-parameters.tpl.html',
               controller: 'ParameterCtrl'
             }
           }

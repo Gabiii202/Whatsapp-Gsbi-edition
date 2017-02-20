@@ -5,14 +5,17 @@
   angular.module('myWhatsApp.controllers')
     .controller("ConversationDetailCtrl",ConversationDetailCtrl);
 
-  ConversationDetailCtrl.$inject=['$scope', '$stateParams', 'ConversationsSrv', 'ConversationDetailSrv','$ionicHistory','$ionicNavBarDelegate'];
+  ConversationDetailCtrl.$inject=['$scope', '$stateParams', 'ConversationsSrv', 'ConversationDetailSrv','$ionicNavBarDelegate','$ionicHistory'];
 
-  function ConversationDetailCtrl($scope, $stateParams, ConversationsSrv, ConversationDetailSrv,$ionicHistory,$ionicNavBarDelegate) {
+  function ConversationDetailCtrl($scope, $stateParams, ConversationsSrv, ConversationDetailSrv,$ionicNavBarDelegate,$ionicHistory) {
 
     $ionicNavBarDelegate.showBackButton(true);
 
     let conversationId = $stateParams.conversationId;
 
+    /**
+     * Initialize scope data
+     */
     $scope.initModel = function() {
 
       $scope.messages = ConversationDetailSrv.findAll(conversationId);
@@ -22,28 +25,32 @@
         $scope.conversation = conversation;
       });
 
-      var historyId = $ionicHistory.currentHistoryId();
-      var history = $ionicHistory.viewHistory().histories[historyId];
-      for (var i = history.stack.length - 1; i >= 0; i--){
-        if (history.stack[i].stateName == 'tab.conversations'){
-          history.stack[i].stateParams.straightToDetail = false;
-          console.log(history.stack[i]);
-        }
-      }
+      ConversationDetailSrv.setHistoryStraightToDetail(false);
 
     };
 
+    /**
+     * Sends a message to the conversation
+     * @param message Message sent
+     */
     $scope.sendMessage = function(message) {
+
       let newMessage = ConversationDetailSrv.addMessage(message);
 
+      // Adds the new message to the synced object
       $scope.messages.$ref().child(newMessage._id).set(newMessage);
 
       ConversationsSrv.updateLastText(conversationId,message,new Date().toString());
 
-      $scope.message = null;
+      $scope.message = null; // Resets input content
 
     };
 
+    /**
+     * Helper to facilitate orderBy date in the view
+     * @param message Message sent
+     * @returns {Date} Message's date
+     */
     $scope.dateOrder = function(message) {
       return new Date(message.sentDate);
     };

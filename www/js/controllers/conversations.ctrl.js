@@ -14,15 +14,23 @@
     $ionicNavBarDelegate.showBackButton(false);
 
 
+    /**
+     * Initialize scope data
+     */
     $scope.initModel = function () {
       $scope.conversations = ConversationsSrv.findConversationsForContact($rootScope.user._id);
 
+      // Checks if attribute is set to true. If that's the case redirect to the conversation detail view
       if($stateParams.straightToDetail){
         $state.go('tab.conversationDetail',{conversationId:$stateParams.conversationId,straightToDetail:false});
       }
     };
 
-
+    /**
+     * Helper to facilitate orderBy date in the view
+     * @param conversation Conversation
+     * @returns {Date} Conversation's creation date
+     */
     $scope.creationDateOrder = function(conversation) {
       return new Date(conversation.creationDate);
     };
