@@ -9,15 +9,25 @@
 
   function ConversationsSrv($q,$firebaseArray) {
 
+    /**
+     * Retrieves all the conversations from the Firebase database
+     * @returns {*} Conversations
+     */
     this.findAll = function(){
-      let ref = firebase.database().ref("/conversations/");
+      const ref = firebase.database().ref("/conversations/");
       return $firebaseArray(ref);
     };
 
+    /**
+     * Retrieves a particular conversation from the Firebase database
+     * @param conversationId ID of the conversation
+     * @returns {Promise} Promise containing the conversation
+     */
     this.getConversation = function(conversationId){
 
-      let deferred = $q.defer();
+      const deferred = $q.defer();
 
+      // Retrieves the conversation from the given ID
       firebase.database().ref("/conversations/"+conversationId)
         .once('value', function (v) {
           if(v.exists()) {
@@ -30,10 +40,16 @@
       return deferred.promise;
     };
 
-     function getConversationMembers(conversationId){
+    /**
+     * Retrieves members of a particular conversation from the Firebase database
+     * @param conversationId ID of the conversation
+     * @returns {Promise} Promise containing the members of the conversation
+     */
+    function getConversationMembers(conversationId){
 
-      let deferred = $q.defer();
+      const deferred = $q.defer();
 
+      // Retrieves the members of a conversation from the given ID
       firebase.database().ref("/members/"+conversationId)
         .once('value', function (v) {
           if(v.exists()) {
@@ -46,12 +62,18 @@
       return deferred.promise;
     }
 
-
+    /**
+     * Retrives all the conversations of a given contact
+     * @param contactId ID of the contact
+     * @returns {Array} Contact's conversations
+     */
     this.findConversationsForContact = function(contactId){
-      let conversations = this.findAll();
+
+      const conversations = this.findAll();
 
       let conversationsForContact = [];
 
+      // when the conversations object is loaded, builds an array of all the contacts' conversations
       conversations.$loaded()
         .then(function(){
           angular.forEach(conversations, function(conversation) {
@@ -72,16 +94,28 @@
       return conversationsForContact;
     };
 
-     function isAPrivateConversationMember(contactId,conversationId){
+    /**
+     * Checks if a given contact is in a conversation
+     * @param contactId ID of the contact
+     * @param conversationId ID of the conversation
+     * @returns {*|Promise.<TResult>} Promise indicating if the contact is a member of the conversation
+     */
+    function isAPrivateConversationMember(contactId,conversationId){
       return getConversationMembers(conversationId).then(function(members){
         return contactId in members;
       });
-
-
     }
 
+    /**
+     * Builds a conversation object which will
+     * @param nom Name of the conversation
+     * @param description Description of the conversation
+     * @param status Status ( public/private ) of the conversation
+     * @returns {*}
+     */
     this.addConversation = function(nom, description,status) {
 
+      // if the name or the description isn't defined we can't build a conversation
       if(!nom || !description){
         return null;
       }
@@ -97,48 +131,35 @@
       };
     };
 
-    this.updateLastText = function(conversationId,message,date){
+    /**
+     * Updates the last message of a given conversation
+     * @param conversationId ID of the conversation
+     * @param message Last message
+     * @param date Date of the message
+     */
+    this.updateLastMessage = function(conversationId,message,date){
       firebase.database().ref("/conversations/"+conversationId).update({
         lastMessage: message,
         lastMessageDate: date
       });
     };
 
+    /**
+     * Sets the members of a given conversation in the Firebase database
+     * @param conversationId ID of the conversation
+     * @param contacts Conversation's contacts
+     */
     this.setPrivateConversationMembers = function(conversationId,contacts){
 
       let contactsToAdd = [];
 
       contacts.forEach(function (contact){
-          contactsToAdd[contact._id] = true;
+        contactsToAdd[contact._id] = true;
       });
 
       firebase.database().ref("/members/"+conversationId).set(contactsToAdd);
     };
 
-
-    // function loadConversationsFromJSON() {
-    //   if(!conversations) {
-    //     return $http.get('data/conversations.json').then(function (response) {
-    //       conversations = response.data;
-    //       return conversations;
-    //     }, function (response) {
-    //       console.log('Erreur conversations.json : ' + response.status);
-    //     });
-    //   } else {
-    //     let c = $q.defer();
-    //     c.resolve(conversations);
-    //     return c.promise;
-    //   }
-    // }
-    //
-    // function findConversationIndex(conversations,id){
-    //   for (let i = 0; i < conversations.length; i++) {
-    //     if(conversations[i]._id === id) {
-    //       return i;
-    //     }
-    //   }
-    //   return -1;
-    // }
 
   }
 

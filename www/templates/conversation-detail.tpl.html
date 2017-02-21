@@ -40,9 +40,11 @@
         </div>
       </div>
     </div>
+
   </ion-content>
 
   <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
+
     <label class="item-input-wrapper">
       <input ng-model="message" value="" placeholder="Send a message..." required minlength="1" maxlength="1500" msd-elastic></textarea>
     </label>
@@ -51,6 +53,7 @@
               ng-disabled="!message || message === ''" ng-click="sendMessage(message)">
       </button>
     </div>
+    
   </ion-footer-bar>
 
 </ion-view>

@@ -1,8 +1,8 @@
 <ion-view view-title="Inscription">
 
-  <ion-content>
-    <div class="list card">
+  <ion-content ng-init="initModel()">
 
+    <div class="list card">
       <label class="item item-input">
         <input ng-model="prenom" type="text" name="prenom" placeholder="Prénom" class="item"/>
       </label>
@@ -16,12 +16,13 @@
         <input ng-model="password" type="password" name="password" placeholder="Mot de passe" class="item"/>
       </label>
     </div>
+
     <div class="text-center">
       <button id="signup-button" ng-click="signup(email, prenom, nom, password)" class="button button-block button-stable">
         S'inscrire
       </button>
     </div>
 
-
   </ion-content>
+
 </ion-view>

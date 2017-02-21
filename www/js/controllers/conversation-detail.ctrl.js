@@ -40,7 +40,7 @@
       // Adds the new message to the synced object
       $scope.messages.$ref().child(newMessage._id).set(newMessage);
 
-      ConversationsSrv.updateLastText(conversationId,message,new Date().toString());
+      ConversationsSrv.updateLastMessage(conversationId,message,new Date().toString());
 
       $scope.message = null; // Resets input content
 

@@ -1,5 +1,6 @@
 <ion-view view-title="Nouvelle conversation">
-  <ion-content>
+
+  <ion-content ng-init="initModel()">
 
     <div class="list card">
       <label class="item item-input">
@@ -21,7 +22,6 @@
       </ion-checkbox>
     </div>
 
-
     <div class="text-center">
       <button ng-click="createConversation(name, description,contacts)" class="button button-block button-stable">
         Créer
@@ -29,4 +29,5 @@
     </div>
 
   </ion-content>
+
 </ion-view>

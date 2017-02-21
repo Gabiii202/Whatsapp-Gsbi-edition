@@ -27,7 +27,7 @@
      */
     $scope.searchContact = function (contact) {
       if ($scope.model.search) {
-        let query = $scope.model.search.toLowerCase();
+        const query = $scope.model.search.toLowerCase();
         return contact.firstName.toLowerCase().indexOf(query) > -1 || contact.lastName.toLowerCase().indexOf(query) > -1;
       }
       return true;

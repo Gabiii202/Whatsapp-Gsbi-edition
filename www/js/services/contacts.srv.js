@@ -9,21 +9,32 @@
 
   function ContactsSrv($q,$firebaseArray){
 
+    /**
+     * Retrieves all the contacts in the Firebase database
+     * @returns {*} Contacts
+     */
     this.findAll = function(){
-      let ref = firebase.database().ref("/contacts");
+      const ref = firebase.database().ref("/contacts");
       return $firebaseArray(ref);
     };
 
 
+    /**
+     * Authenticates the user.
+     * @param email Email
+     * @param password Password
+     * @returns {Promise} Promise containing the authenticated user
+     */
     this.authenticate = function(email, password) {
 
-      let deferred = $q.defer();
+      const deferred = $q.defer();
 
+      // Retrieves the user in the database from the email and checks is the password matches
       firebase.database().ref("/contacts/")
         .equalTo(email)
         .orderByChild('email')
         .once('value', function(v){
-          let user = findFirst(v.val());
+          const user = findFirst(v.val());
           if(user && user.password === password){
             deferred.resolve(user);
           }
@@ -36,6 +47,14 @@
 
     };
 
+    /**
+     * Builds a Contact object which will be added to the database
+     * @param email Email
+     * @param prenom firstName
+     * @param nom lastName
+     * @param password Password
+     * @returns {{_id: number, email: *, firstName: *, lastName: *, password: *, face: string}} Contact object
+     */
     this.addContact = function( email,prenom, nom, password) {
       return {
         _id: Date.now(),
@@ -45,29 +64,17 @@
         password: password,
         face: "img/profile.png"
       };
-
     };
 
+    /**
+     * Helper to find the first element of an object
+     * @param obj Object
+     * @returns {*} First element of the object
+     */
     function findFirst(obj){
-      for(let o in obj)
+      for(const o in obj)
         return obj[o];
-    };
-
-
-    // function loadContactsFromJSON() {
-    //   if(!contacts) {
-    //     return $http.get('data/contacts.json').then(function (response) {
-    //       contacts = response.data;
-    //       return contacts;
-    //     }, function (response) {
-    //       console.log('Erreur contacts.json : ' + response.status);
-    //     });
-    //   } else {
-    //     let c = $q.defer();
-    //     c.resolve(contacts);
-    //     return c.promise;
-    //   }
-    // }
+    }
 
   }
 

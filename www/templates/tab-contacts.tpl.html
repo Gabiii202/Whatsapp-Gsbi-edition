@@ -1,4 +1,5 @@
 <ion-view view-title="Contacts">
+
   <ion-header-bar class="bar-light bar-subheader" id="researchBar">
 
     <label class="bar bar-header item item-input">
@@ -8,6 +9,7 @@
   </ion-header-bar>
 
   <ion-content ng-init="initModel()">
+
     <ion-list id="contactsList">
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="contact in contacts |
         orderBy:'firstName' | filter:searchContact" type="item-text-wrap" ng-if="contact._id !== user._id" ng-click="newPrivateConversation(contact)">
@@ -15,6 +17,7 @@
         <h2>{{contact.firstName}} {{contact.lastName}}</h2>
       </ion-item>
     </ion-list>
+
   </ion-content>
 
 </ion-view>

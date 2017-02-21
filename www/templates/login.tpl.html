@@ -1,6 +1,7 @@
 <ion-view view-title="Connexion">
 
   <ion-content>
+
     <div class="list card">
       <label class="item item-input">
         <input ng-model="email" type="text" placeholder="Email" class="item"/>
@@ -12,12 +13,12 @@
     </div>
 
     <div class="text-center">
-      <button ng-click="login(email, password)" class="button button-block button-stable" id="login-button">
+      <button ng-click="login(email, password)" class="button button-block button-stable button-positive" id="login-button">
         Se connecter
       </button>
-      <a ui-sref="signup">Créer un compte</a>
+      <button  id="signup-redirection-button" class="button button-stable button-balanced" ui-sref="signup">Créer un compte</button>
     </div>
 
-
   </ion-content>
+
 </ion-view>
