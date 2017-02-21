@@ -2,22 +2,22 @@
 
   <ion-content>
 
-    <div class="list card">
-      <label class="item item-input">
-        <input ng-model="email" type="text" placeholder="Email" class="item"/>
-      </label>
+      <div class="list card" id="login-inputs">
+        <label class="item item-input">
+          <input ng-model="email" type="text" placeholder="Email" class="item"/>
+        </label>
 
-      <label class="item item-input">
-        <input ng-model="password" type="password" placeholder="Mot de passe" class="item"/>
-      </label>
-    </div>
+        <label class="item item-input">
+          <input ng-model="password" type="password" placeholder="Mot de passe" class="item"/>
+        </label>
+      </div>
 
-    <div class="text-center">
-      <button ng-click="login(email, password)" class="button button-block button-stable button-positive" id="login-button">
-        Se connecter
-      </button>
-      <button id="signup-redirection" class="button button-clear button-positive" ui-sref="signup">Créer un compte</button>
-    </div>
+      <div class="text-center">
+        <button ng-click="login(email, password)" class="button button-block button-stable" id="login-button">
+          Se connecter
+        </button>
+        <button id="signup-redirection" class="button button-clear button-positive" ui-sref="signup">Créer un compte</button>
+      </div>
 
   </ion-content>
 

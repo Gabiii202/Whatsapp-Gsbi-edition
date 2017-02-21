@@ -1,0 +1,39 @@
+/*Browser stuff*/
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+
+/* Commons */
+#login-button, #signup-button, #disconnect-button{
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 35px;
+}
+
+/* Login */
+#login-inputs{
+  width:80%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 12%;
+}
+
+/*New Conversation*/
+#add-conversation{
+  float:right;
+  padding-right: 20px;
+}
+
+/*Sign up*/
+#signup-form{
+  width: 85%;
+  margin: 12% auto 0;
+}
+
+/*Contact*/
+#content-contacts{
+  margin-top: 2%;
+}

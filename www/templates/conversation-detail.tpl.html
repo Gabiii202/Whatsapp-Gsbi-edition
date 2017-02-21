@@ -1,4 +1,6 @@
-<ion-view cache-view="false" view-title="{{conversation.name}}">
+<ion-view cache-view="false">
+
+  <ion-nav-title>{{conversation.name}}</ion-nav-title>
 
   <ion-content has-bouncing="true" class="has-header has-footer"
                delegate-handle="userMessageScroll" ng-init="initModel()">
@@ -25,8 +27,6 @@
 
       <div ng-if="user.firstName === message.sender">
 
-        <img class="profile-pic right" ng-src="{{user.face}}"/>
-
         <div class="chat-bubble right">
 
           <div class="message" ng-bind-html="message.text" autolinker>
@@ -39,6 +39,9 @@
 
         </div>
       </div>
+
+      <img class="profile-pic right" ng-src="{{user.face}}"/>
+
     </div>
 
   </ion-content>
@@ -46,14 +49,15 @@
   <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
 
     <label class="item-input-wrapper">
-      <input ng-model="message" value="" placeholder="Send a message..." required minlength="1" maxlength="1500" msd-elastic></textarea>
+      <input ng-model="message" value="" placeholder="Send a message..." required minlength="1" maxlength="1500"
+             class="item" msd-elastic></textarea>
     </label>
     <div class="footer-btn-wrap">
       <button class="button button-icon icon ion-android-send footer-btn"
               ng-disabled="!message || message === ''" ng-click="sendMessage(message)">
       </button>
     </div>
-    
+
   </ion-footer-bar>
 
 </ion-view>

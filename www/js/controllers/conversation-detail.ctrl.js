@@ -20,7 +20,6 @@
 
       $scope.messages = ConversationDetailSrv.findAll(conversationId);
 
-      // TODO : doesn't work: conversation title isn't shown on the conversationDetail view
       ConversationsSrv.getConversation(conversationId).then(function (conversation) {
         $scope.conversation = conversation;
       });
