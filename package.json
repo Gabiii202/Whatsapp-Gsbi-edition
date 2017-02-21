@@ -1,7 +1,7 @@
 {
   "name": "whatsapp-like",
   "version": "1.1.1",
-  "description": "whatsapp: An Ionic project",
+  "description": "whatsapp-like",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
