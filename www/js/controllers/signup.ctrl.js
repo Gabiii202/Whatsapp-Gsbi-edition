@@ -26,13 +26,12 @@
      */
     $scope.signup = function(prenom, nom, email, password) {
 
-      // TODO : when user logs in he is shown in the list of contacts
       if(prenom && nom && email && password) {
 
         $rootScope.user = ContactsSrv.addContact(prenom, nom, email, password);
 
         // Adds the new contact to the synced object
-        $scope.contacts.$add($rootScope.user);
+        $scope.contacts.$ref().child($rootScope.user._id).set($rootScope.user);
 
         $location.path('/conversations');
       } else {
