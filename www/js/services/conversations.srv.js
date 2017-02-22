@@ -120,13 +120,15 @@
         return null;
       }
 
+      const date = new Date().toString();
+
       return {
         _id: Date.now(),
         name: nom,
         description: description,
-        creationDate: new Date().toString(),
+        creationDate: date,
         lastMessage: "",
-        lastMessageDate: "",
+        lastMessageDate: date,
         private: status
       };
     };

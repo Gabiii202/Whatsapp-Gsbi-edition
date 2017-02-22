@@ -31,10 +31,10 @@
     /**
      * Helper to facilitate orderBy date in the view
      * @param conversation Conversation
-     * @returns {Date} Conversation's creation date
+     * @returns {Date} Conversation's last message date
      */
-    $scope.creationDateOrder = function(conversation) {
-      return new Date(conversation.creationDate);
+    $scope.lastMessageDateOrder = function(conversation) {
+      return new Date(conversation.lastMessageDate);
     };
 
   }

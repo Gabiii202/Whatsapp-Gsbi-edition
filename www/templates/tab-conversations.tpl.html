@@ -9,7 +9,7 @@
 
     <ion-list>
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="conversation in conversations |
-       orderBy: '-creationDate'" type="item-text-wrap" ui-sref="tab.conversationDetail({conversationId:conversation._id})">
+       orderBy: '-lastMessageDate'" type="item-text-wrap" ui-sref="tab.conversationDetail({conversationId:conversation._id})">
         <img src="img/conversation.png">
         <h2>{{conversation.name}}</h2>
         <p>{{conversation.lastMessage}}</p>
