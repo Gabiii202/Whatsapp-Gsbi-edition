@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('myWhatsApp', ['ionic', 'myWhatsApp.controllers', 'myWhatsApp.services','angularMoment',
-                                'nl2br','firebase'])
+    'nl2br','firebase'])
 
     .run(function($ionicPlatform, $rootScope, $location, $state) {
 
@@ -87,8 +87,8 @@
 
         .state('newConversation', {
           url: '/newConversation',
-              templateUrl: 'templates/new-conversation.tpl.html',
-              controller: 'NewConversationCtrl'
+          templateUrl: 'templates/new-conversation.tpl.html',
+          controller: 'NewConversationCtrl'
         })
 
         .state('tab.conversationDetail', {

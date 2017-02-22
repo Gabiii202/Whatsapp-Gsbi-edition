@@ -33,7 +33,7 @@
         // Adds the new contact to the synced object
         $scope.contacts.$ref().child($rootScope.user._id).set($rootScope.user);
 
-        $location.path('/conversations');
+        $location.path('/tab/contacts');
       } else {
         // Throws an error when the signup failed
         $ionicPopup.alert({
