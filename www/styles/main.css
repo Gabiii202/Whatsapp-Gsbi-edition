@@ -37,3 +37,11 @@ input:-webkit-autofill {
 #content-contacts{
   margin-top: 2%;
 }
+
+/*Parameters*/
+#parameters-card{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 12%;
+}

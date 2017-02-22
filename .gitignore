@@ -5,3 +5,4 @@ plugins/
 npm-debug.log
 /www/bower_components/
 whatsapp-like.iml
+resources/

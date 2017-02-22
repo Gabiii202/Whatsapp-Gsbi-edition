@@ -32,7 +32,7 @@
         $rootScope.user = user;
 
         // Redirects to contacts view if the credentials are correct
-        $location.path('/contacts');
+        $location.path('/tab/contacts');
 
       }).catch(function () {
         // Throw error if authentication failed
