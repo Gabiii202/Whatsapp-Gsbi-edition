@@ -35,28 +35,41 @@
       // Retrieve the status (public/private) of the new conversation
       const status = $scope.newConversation.private;
 
-      const conversation = ConversationsSrv.addConversation(name,description,status);
+      const contactsToAdd = contacts.filter(c => c.checked === true || c._id === $rootScope.user._id);
 
-      if(conversation !== null){
-
-        // Adds the new conversation to the synced object
-        $scope.conversations.$ref().child(conversation._id).set(conversation);
-
-        // If the conversation will be private, we select the members checked and the current user to add them as members of the conversation
-        if(status){
-          const contactsToAdd = contacts.filter(c => c.checked === true || c._id === $rootScope.user._id);
-          ConversationsSrv.setPrivateConversationMembers(conversation._id,contactsToAdd);
-        }
-
-        $location.path('/tab/conversations');
-      }
-      else {
-        // Throws an error if the conversation cannot be added
+      if(status && contactsToAdd.length === 1){
+        // A private conversation must have at least two people
         $ionicPopup.alert({
           title: 'Erreur création conversation',
-          template: 'Veuillez renseigner les champs nom et description'
+          template: 'Veuillez sélectionner des participants à la conversation privée'
         });
       }
+      else {
+
+        const conversation = ConversationsSrv.addConversation(name,description,status);
+
+        if(conversation !== null){
+
+          // Adds the new conversation to the synced object
+          $scope.conversations.$ref().child(conversation._id).set(conversation);
+
+          // If the conversation will be private, we select the members checked and the current user to add them as members of the conversation
+          if(status){
+            ConversationsSrv.setPrivateConversationMembers(conversation._id,contactsToAdd);
+          }
+
+          $location.path('/tab/conversations');
+        }
+        else {
+          // Throws an error if the conversation cannot be added
+          $ionicPopup.alert({
+            title: 'Erreur création conversation',
+            template: 'Veuillez renseigner les champs nom et description'
+          });
+        }
+
+      }
+
 
     }
 
